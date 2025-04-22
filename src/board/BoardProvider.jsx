@@ -85,7 +85,7 @@ export const BoardProvider = ({ children }) => {
       () => api.getBoard(boardId),
       (board) => {
         if (board) {
-          // Ensure the board object has the ID in a consistent location
+         
           const normalizedBoard = {
             ...board,
             _id: board._id || board.boardId?._id || boardId

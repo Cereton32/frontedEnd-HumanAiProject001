@@ -15,14 +15,14 @@ const HomeScreen = () => {
     const checkAndCreateUser = async () => {
       if (user) {
         try {
-          // First try to fetch user data
+
           await fetchBoards();
         } catch (fetchError) {
           console.log('User not found, creating new user...');
           try {
-            // If user not found, create new user
+    
             await createUser(user.phoneNumber);
-            // Then fetch boards again
+        
             await fetchBoards();
           } catch (createError) {
             console.error('Failed to create user:', createError);

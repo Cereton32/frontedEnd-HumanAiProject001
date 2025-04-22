@@ -11,7 +11,7 @@ const BoardList = ({ boards, isShared = false }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {boards.map((board) => {
-        // Ensure we're using the correct ID structure
+       
         const boardId = board.boardId?._id || board._id || board.boardId;
         if (!boardId) {
           console.error('Invalid board data:', board);

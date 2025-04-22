@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = auth.onAuthStateChanged(setUser);
     return () => {
       unsubscribe();
-      // Clean up reCAPTCHA on unmount
+    
       if (recaptchaWidgetIdRef.current) {
         window.grecaptcha?.reset(recaptchaWidgetIdRef.current);
       }
@@ -23,12 +23,12 @@ export const AuthProvider = ({ children }) => {
 
   const setUpRecaptcha = async () => {
     try {
-      // Clear existing reCAPTCHA if any
+   
       if (recaptchaWidgetIdRef.current) {
         window.grecaptcha?.reset(recaptchaWidgetIdRef.current);
       }
 
-      // Create new verifier
+
       recaptchaVerifierRef.current = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         size: 'invisible',
         callback: () => {},
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
         }
       });
 
-      // Render and store widget ID
+    
       const widgetId = await recaptchaVerifierRef.current.render();
       recaptchaWidgetIdRef.current = widgetId;
       return recaptchaVerifierRef.current;
@@ -52,10 +52,10 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       
-      // Ensure reCAPTCHA is properly set up
+
       const appVerifier = await setUpRecaptcha();
       
-      // Send verification code
+      // Sendcode
       const result = await auth.signInWithPhoneNumber(phoneNumber, appVerifier);
       
       setConfirmationResult(result);
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error('SMS not sent', error);
       showNotification(`Error: ${error.message}`, 'red');
-      // Reset reCAPTCHA on error
+     
       if (recaptchaWidgetIdRef.current) {
         window.grecaptcha?.reset(recaptchaWidgetIdRef.current);
       }
@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
       showNotification('Logged out successfully', 'red');
       window.location.reload(); 
-     // Refresh the window after logout
+
     } catch (error) {
       console.error('Logout error:', error);
     }
@@ -117,7 +117,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {/* Hidden container for reCAPTCHA */}
+
       <div id="recaptcha-container" style={{ display: 'none' }}></div>
       {children}
     </AuthContext.Provider>

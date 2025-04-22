@@ -17,12 +17,12 @@ const BoardDetail = () => {
   } = useBoard();
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-  // Memoize the effective board ID to prevent recalculations
+
   const effectiveBoardId = useMemo(() => {
     return currentBoard?.boardId?._id || currentBoard?._id || paramBoardId;
   }, [currentBoard, paramBoardId]);
 
-  // Stabilized data fetching
+
   useEffect(() => {
     if (!paramBoardId) {
       navigate('/home');
@@ -43,7 +43,7 @@ const BoardDetail = () => {
     fetchData();
 
     return () => {
-      // Only clear if navigating away from this board
+
       if (!window.location.pathname.startsWith(`/board/${paramBoardId}`)) {
         clearCurrentBoard();
       }
