@@ -19,7 +19,7 @@
     "react-router-dom": "^7.5.1",
     "react-select": "^5.10.1",
     "tailwindcss": "^4.1.4",
-    "proxy": "http://localhost:5005"
+    "proxy": "https://backend-server-for-humanaiproject001.onrender.com"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
