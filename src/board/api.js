@@ -1,8 +1,8 @@
+const API_URL = 'https://backend-server-for-humanaiproject001.onrender.com/api';
 
+// const apiUrl = import.meta.env.VITE_API_URL;
 
-const apiUrl = import.meta.env.VITE_API_URL;
-
-const API_URL = apiUrl+'/api';
+// const API_URL = apiUrl+'/api'
 
 const apiRequest = async (endpoint, method = 'GET', body = null) => {
   const options = {
