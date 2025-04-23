@@ -30,11 +30,13 @@ const ShareBoard = ({ boardId }) => {
 
   return (
     <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
-      <div className="p-5 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
-        <h2 className="text-xl font-bold text-gray-800">Share This Board</h2>
-        <p className="text-sm text-gray-500 mt-1">Collaborate with others by sharing access</p>
-      </div>
+    <div className="p-5 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
+      <h2 className="text-xl font-bold text-gray-800">Share This Board</h2>
+      <p className="text-sm text-gray-500 mt-1">Collaborate with others by sharing access</p>
+      <p className="text-xs text-gray-400 mt-2">* Phone number should be in the format: +919934601244</p>
+    </div>
 
+  
       <div className="p-5">
         <form onSubmit={handleShare} className="mb-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
